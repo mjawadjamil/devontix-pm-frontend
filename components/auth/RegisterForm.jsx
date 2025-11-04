@@ -9,7 +9,7 @@ export default function RegisterForm() {
     name: '',
     email: '',
     password: '',
-    role: 'Developer'
+    // Removed role field - it will default to 'Developer' in backend
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -28,6 +28,7 @@ export default function RegisterForm() {
     setLoading(true);
     setMessage('');
 
+    // Don't send role at all - let backend use default
     const result = await register(formData);
     
     if (result.success) {
@@ -114,21 +115,7 @@ export default function RegisterForm() {
             />
           </div>
 
-          <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-              Role
-            </label>
-            <select
-              id="role"
-              name="role"
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-              value={formData.role}
-              onChange={handleChange}
-            >
-              <option value="Developer">Developer</option>
-              <option value="Admin">Admin</option>
-            </select>
-          </div>
+          {/* REMOVED ROLE SELECTION COMPLETELY */}
         </div>
 
         <div>
